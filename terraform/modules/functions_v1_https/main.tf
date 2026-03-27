@@ -24,13 +24,9 @@ locals {
     } : {}
   )
 
-  vpc_connector = {
-    for r in var.regions : r => (
-      var.vpc_connector != null && var.vpc_connector != "" ? (
-        can(regex("/", var.vpc_connector)) ? var.vpc_connector : "projects/${var.project}/locations/${r}/connectors/${var.vpc_connector}"
-      ) : null
-    )
-  }
+  vpc_connector = var.vpc_connector != null && var.vpc_connector != "" ? (
+    can(regex("/", var.vpc_connector)) ? var.vpc_connector : "projects/${var.project}/locations/${var.region}/connectors/${var.vpc_connector}"
+  ) : null
 
   is_private = contains(var.invokers, "private")
   is_public  = contains(var.invokers, "public") || length(var.invokers) == 0
@@ -49,11 +45,9 @@ locals {
 }
 
 resource "google_cloudfunctions_function" "this" {
-  for_each = var.regions
-
   name                  = local.function_name
   project               = var.project
-  region                = each.value
+  region                = var.region
   description           = var.description
   runtime               = var.runtime
   available_memory_mb   = var.available_memory_mb
@@ -62,7 +56,7 @@ resource "google_cloudfunctions_function" "this" {
   trigger_http          = true
   environment_variables = local.environment_variables
   labels                = local.labels
-  vpc_connector         = local.vpc_connector[each.value]
+  vpc_connector         = local.vpc_connector
   vpc_connector_egress_settings = var.vpc_connector_egress_settings
   max_instances         = var.max_instances
   min_instances         = var.min_instances
@@ -84,14 +78,11 @@ resource "google_cloudfunctions_function" "this" {
 }
 
 resource "google_cloudfunctions_function_iam_binding" "invoker" {
-  for_each = {
-    for r in var.regions : r => google_cloudfunctions_function.this[r]
-    if !local.is_private && length(local.invoker_members) > 0
-  }
+  count = !local.is_private && length(local.invoker_members) > 0 ? 1 : 0
 
-  project        = each.value.project
-  region         = each.value.region
-  cloud_function = each.value.name
+  project        = google_cloudfunctions_function.this.project
+  region         = google_cloudfunctions_function.this.region
+  cloud_function = google_cloudfunctions_function.this.name
 
   role    = "roles/cloudfunctions.invoker"
   members = local.invoker_members

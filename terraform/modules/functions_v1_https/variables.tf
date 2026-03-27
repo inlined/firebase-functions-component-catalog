@@ -14,9 +14,10 @@ variable "project" {
   type        = string
 }
 
-variable "regions" {
-  description = "The regions to deploy the function to."
-  type        = set(string)
+variable "region" {
+  description = "The region to deploy the function to."
+  type        = string
+  default     = "us-central1"
 }
 
 variable "invokers" {

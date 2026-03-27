@@ -52,10 +52,9 @@ spec:
         description: The project ID.
         varType: string
         required: true
-      - name: regions
-        description: The regions to deploy the function to.
-        varType: list(string)
-        required: false
+      - name: region
+        description: The region to deploy the function to.
+        varType: string
       - name: invokers
         description: The invokers for the function.
         varType: list(string)
@@ -115,8 +114,10 @@ spec:
     outputs:
       - name: name
         description: The computed name of the function.
-      - name: functions
-        description: A map of region to function details.
+      - name: id
+        description: The ID of the function.
+      - name: url
+        description: The URL of the HTTPS trigger.
   requirements:
     roles:
       - level: Project

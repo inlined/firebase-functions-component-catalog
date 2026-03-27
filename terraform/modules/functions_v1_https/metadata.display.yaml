@@ -29,9 +29,9 @@ spec:
         project:
           name: project
           title: Project ID
-        regions:
-          name: regions
-          title: Regions
+        region:
+          name: region
+          title: Region
           level: 2
         invokers:
           name: invokers
@@ -89,5 +89,7 @@ spec:
       outputs:
         name:
           visibility: VISIBILITY_ROOT
-        functions:
+        id:
+          visibility: VISIBILITY_ROOT
+        url:
           visibility: VISIBILITY_ROOT
