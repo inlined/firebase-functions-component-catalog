@@ -17,6 +17,8 @@ spec:
         source_archive:
           name: source_archive
           title: Source Archive GS URL
+          regexValidation: ^gs://.*\\.(tgz|zip)$
+          validation: The source_archive must be a gs:// URL ending with .tgz or .zip
           level: 1
         extension_id:
           name: extension_id
