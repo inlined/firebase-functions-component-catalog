@@ -112,10 +112,10 @@ spec:
     roles:
       - level: Project
         roles:
-          - firebase.admin
-          - iam.serviceAccountAdmin
-          - iam.serviceAccountUser
-          - serviceusage.serviceUsageAdmin
+          - roles/firebase.admin
+          - roles/iam.serviceAccountAdmin
+          - roles/iam.serviceAccountUser
+          - roles/serviceusage.serviceUsageAdmin
     services:
       - cloudfunctions.googleapis.com
       - iam.googleapis.com
