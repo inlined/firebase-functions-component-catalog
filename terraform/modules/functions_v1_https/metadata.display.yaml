@@ -23,12 +23,14 @@ spec:
         extension_id:
           name: extension_id
           title: Extension ID
+          level: 2
         project:
           name: project
           title: Project ID
         regions:
           name: regions
           title: Regions
+          level: 2
         invokers:
           name: invokers
           title: Invokers
@@ -44,41 +46,46 @@ spec:
         available_memory_mb:
           name: available_memory_mb
           title: Available Memory (MB)
+          level: 2
         timeout:
           name: timeout
           title: Timeout (seconds)
+          level: 2
         environment_variables:
           name: environment_variables
           title: Environment Variables
         labels:
           name: labels
           title: Labels
-        vpc_connector:
-          name: vpc_connector
-          title: VPC Connector
-        vpc_connector_egress_settings:
-          name: vpc_connector_egress_settings
-          title: VPC Connector Egress Settings
         max_instances:
           name: max_instances
           title: Max Instances
+          level: 2
         min_instances:
           name: min_instances
           title: Min Instances
-        ingress_settings:
-          name: ingress_settings
-          title: Ingress Settings
+          level: 2
         service_account:
           name: service_account
           title: Service Account
         secret_environment_variables:
           name: secret_environment_variables
           title: Secret Environment Variables
+        vpc_connector:
+          name: vpc_connector
+          title: VPC Connector
+          level: 2
+        vpc_connector_egress_settings:
+          name: vpc_connector_egress_settings
+          title: VPC Connector Egress Settings
+          level: 2
+        ingress_settings:
+          name: ingress_settings
+          title: Ingress Settings
+          level: 2
     runtime:
       outputs:
         name:
-          name: name
-          title: Computed Name
+          visibility: VISIBILITY_ROOT
         functions:
-          name: functions
-          title: Functions Map
+          visibility: VISIBILITY_ROOT
