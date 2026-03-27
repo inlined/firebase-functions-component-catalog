@@ -15,16 +15,16 @@
 apiVersion: blueprints.cloud.google.com/v1alpha1
 kind: BlueprintMetadata
 metadata:
-  name: functions_v1_https
+  name: functions_v1_callable
   annotations:
     config.kubernetes.io/local-config: "true"
 spec:
   info:
-    title: Firebase Functions v1 HTTPS Function
+    title: Firebase Functions v1 Callable Function
     source:
       repo: https://github.com/inlined/firebase-component-catalog.git
       sourceType: git
-      dir: /terraform/modules/functions_v1_https
+      dir: /terraform/modules/functions_v1_callable
     version: 0.0.2
     actuationTool:
       flavor: Terraform
@@ -33,8 +33,8 @@ spec:
     icon: icons/firebase.png
   content:
     examples:
-      - name: functions_v1_https_basic
-        location: examples/functions_v1_https
+      - name: functions_v1_callable_basic
+        location: examples/functions_v1_callable
   interfaces:
     variables:
       - name: name

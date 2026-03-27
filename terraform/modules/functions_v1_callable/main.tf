@@ -10,7 +10,8 @@ locals {
   labels = merge(
     var.labels != null ? var.labels : {},
     {
-      "goog-managed-by" = "firebase-functions"
+      "goog-managed-by"     = "firebase-functions"
+      "deployment-callable" = "true"
     }
   )
 
