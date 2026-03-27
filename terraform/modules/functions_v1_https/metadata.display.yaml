@@ -6,7 +6,9 @@ spec:
   info:
     title: Firebase Functions v1 HTTPS Function Display
     source:
-      url: https://github.com/GoogleCloudPlatform/terraform-google-firebase.git
+      repo: https://github.com/inlined/firebase-component-catalog.git
+      sourceType: git
+      dir: /terraform/modules/functions_v1_https
   ui:
     input:
       variables:
