@@ -8,7 +8,7 @@ spec:
     source:
       repo: https://github.com/inlined/firebase-component-catalog.git
       sourceType: git
-      dir: /terraform/modules/mock-firebase-config-source
+      dir: /modules/mock-firebase-config-source
   ui:
     input:
       variables:

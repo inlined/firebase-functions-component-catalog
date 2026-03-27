@@ -1,14 +1,14 @@
 apiVersion: blueprints.cloud.google.com/v1alpha1
 kind: BlueprintMetadata
 metadata:
-  name: functions_v1_https_display
+  name: functions_v1_callable_display
 spec:
   info:
-    title: Firebase Functions v1 HTTPS Function Display
+    title: Firebase Functions v1 Callable Function Display
     source:
       repo: https://github.com/inlined/firebase-component-catalog.git
       sourceType: git
-      dir: /terraform/modules/functions_v1_https
+      dir: /modules/functions_v1_callable
   ui:
     input:
       variables:
@@ -85,6 +85,34 @@ spec:
           name: ingress_settings
           title: Ingress Settings
           level: 2
+        rate_limits_max_concurrent_dispatches:
+          name: rate_limits_max_concurrent_dispatches
+          title: Max Concurrent Dispatches
+          level: 2
+        rate_limits_max_dispatches_per_second:
+          name: rate_limits_max_dispatches_per_second
+          title: Max Dispatches Per Second
+          level: 2
+        retry_config_max_attempts:
+          name: retry_config_max_attempts
+          title: Max Attempts
+          level: 2
+        retry_config_max_retry_duration:
+          name: retry_config_max_retry_duration
+          title: Max Retry Duration
+          level: 2
+        retry_config_min_backoff:
+          name: retry_config_min_backoff
+          title: Min Backoff
+          level: 2
+        retry_config_max_backoff:
+          name: retry_config_max_backoff
+          title: Max Backoff
+          level: 2
+        retry_config_max_doublings:
+          name: retry_config_max_doublings
+          title: Max Doublings
+          level: 2
     runtime:
       outputs:
         name:
@@ -92,4 +120,8 @@ spec:
         id:
           visibility: VISIBILITY_ROOT
         url:
+          visibility: VISIBILITY_ROOT
+        queue_name:
+          visibility: VISIBILITY_ROOT
+        queue_id:
           visibility: VISIBILITY_ROOT

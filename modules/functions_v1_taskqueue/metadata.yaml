@@ -20,11 +20,11 @@ metadata:
     config.kubernetes.io/local-config: "true"
 spec:
   info:
-    title: Firebase Functions v1 Callable Function
+    title: Firebase Functions v1 Task Queue Function
     source:
       repo: https://github.com/inlined/firebase-component-catalog.git
       sourceType: git
-      dir: /terraform/modules/functions_v1_callable
+      dir: /modules/functions_v1_taskqueue
     version: 0.0.2
     actuationTool:
       flavor: Terraform
@@ -33,8 +33,8 @@ spec:
     icon: icons/firebase.png
   content:
     examples:
-      - name: functions_v1_callable_basic
-        location: examples/functions_v1_callable
+      - name: functions_v1_taskqueue_basic
+        location: examples/functions_v1_taskqueue
   interfaces:
     variables:
       - name: name
