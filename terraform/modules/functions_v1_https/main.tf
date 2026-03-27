@@ -1,5 +1,5 @@
 locals {
-  source_parts = regex("^gs://([^/]+)/(.+)$", var.source_zip)
+  source_parts = regex("^gs://([^/]+)/(.+)$", var.source_archive)
   source_bucket = local.source_parts[0]
   source_object = local.source_parts[1]
 

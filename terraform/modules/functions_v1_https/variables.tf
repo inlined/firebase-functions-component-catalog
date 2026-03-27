@@ -31,12 +31,12 @@ variable "firebase_admin_config" {
   default     = null
 }
 
-variable "source_zip" {
+variable "source_archive" {
   description = "The `gs://` URL of the source code ZIP archive."
   type        = string
   validation {
-    condition     = can(regex("^gs://.*\\.(tgz|zip)$", var.source_zip))
-    error_message = "The source_zip must be a gs:// URL ending with .tgz or .zip"
+    condition     = can(regex("^gs://.*\\.(tgz|zip)$", var.source_archive))
+    error_message = "The source_archive must be a gs:// URL ending with .tgz or .zip"
   }
 }
 
