@@ -1,0 +1,82 @@
+apiVersion: blueprints.cloud.google.com/v1alpha1
+kind: BlueprintMetadata
+metadata:
+  name: functions_v1_https_display
+spec:
+  info:
+    title: Firebase Functions v1 HTTPS Function Display
+    source:
+      url: https://github.com/GoogleCloudPlatform/terraform-google-firebase.git
+  ui:
+    input:
+      variables:
+        name:
+          name: name
+          title: Name
+          level: 1
+        source_archive:
+          name: source_archive
+          title: Source Archive GS URL
+          level: 1
+        extension_id:
+          name: extension_id
+          title: Extension ID
+        project:
+          name: project
+          title: Project ID
+        regions:
+          name: regions
+          title: Regions
+        invokers:
+          name: invokers
+          title: Invokers
+        firebase_admin_config:
+          name: firebase_admin_config
+          title: Firebase Admin Configuration
+        runtime:
+          name: runtime
+          title: Runtime
+        description:
+          name: description
+          title: Description
+        available_memory_mb:
+          name: available_memory_mb
+          title: Available Memory (MB)
+        timeout:
+          name: timeout
+          title: Timeout (seconds)
+        environment_variables:
+          name: environment_variables
+          title: Environment Variables
+        labels:
+          name: labels
+          title: Labels
+        vpc_connector:
+          name: vpc_connector
+          title: VPC Connector
+        vpc_connector_egress_settings:
+          name: vpc_connector_egress_settings
+          title: VPC Connector Egress Settings
+        max_instances:
+          name: max_instances
+          title: Max Instances
+        min_instances:
+          name: min_instances
+          title: Min Instances
+        ingress_settings:
+          name: ingress_settings
+          title: Ingress Settings
+        service_account:
+          name: service_account
+          title: Service Account
+        secret_environment_variables:
+          name: secret_environment_variables
+          title: Secret Environment Variables
+    runtime:
+      outputs:
+        name:
+          name: name
+          title: Computed Name
+        functions:
+          name: functions
+          title: Functions Map

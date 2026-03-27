@@ -1,0 +1,127 @@
+# Copyright 2026 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+apiVersion: blueprints.cloud.google.com/v1alpha1
+kind: BlueprintMetadata
+metadata:
+  name: functions_v1_https
+  annotations:
+    config.kubernetes.io/local-config: "true"
+spec:
+  info:
+    title: Firebase Functions v1 HTTPS Function
+    source:
+      repo: https://github.com/GoogleCloudPlatform/terraform-google-firebase.git
+      sourceType: git
+      dir: /modules/functions_v1_https
+    version: 0.0.2
+    actuationTool:
+      flavor: Terraform
+      version: ">= 1.3"
+    description: {}
+    icon: icons/google-cloud-functions.png
+  content:
+    examples:
+      - name: functions_v1_https_basic
+        location: examples/functions_v1_https
+  interfaces:
+    variables:
+      - name: name
+        description: The name of the function. If extension_id is set, the actual function name will be 'ext-extension_id-name'.
+        varType: string
+        required: true
+      - name: source_archive
+        description: The `gs://` URL of the source code ZIP archive.
+        varType: string
+        required: true
+      - name: extension_id
+        description: The extension ID, if this function is part of an extension.
+        varType: string
+        level: 2
+      - name: project
+        description: The project ID.
+        varType: string
+        required: true
+      - name: regions
+        description: The regions to deploy the function to.
+        varType: list(string)
+        required: false
+        level: 2
+      - name: invokers
+        description: The invokers for the function.
+        varType: list(string)
+      - name: firebase_admin_config
+        description: The standard Firebase Admin configuration.
+        varType: any
+      - name: runtime
+        description: The runtime in which the function will run.
+        varType: string
+      - name: description
+        description: The description of the function.
+        varType: string
+      - name: available_memory_mb
+        description: The amount of memory in MB available for the function.
+        varType: number
+      - name: timeout
+        description: The amount of time in seconds the function has to execute.
+        varType: number
+      - name: environment_variables
+        description: A map of environment variables.
+        varType: map(string)
+      - name: labels
+        description: A map of labels.
+        varType: map(string)
+      - name: vpc_connector
+        description: The VPC Access Connector.
+        varType: string
+      - name: vpc_connector_egress_settings
+        description: The VPC Access Connector egress settings.
+        varType: string
+      - name: max_instances
+        description: The maximum number of instances for the function.
+        varType: number
+      - name: min_instances
+        description: The minimum number of instances for the function.
+        varType: number
+      - name: ingress_settings
+        description: The ingress settings for the function.
+        varType: string
+      - name: service_account
+        description: The service account for the function. Can use a full email address or a name ending with @ for project-relative service accounts.
+        varType: string
+      - name: secret_environment_variables
+        description: A list of secret environment variables.
+        varType: list(object)
+    outputs:
+      - name: name
+        description: The computed name of the function.
+      - name: functions
+        description: A map of region to function details.
+  requirements:
+    roles:
+      - level: Project
+        roles:
+          - firebase.admin
+          - iam.serviceAccountAdmin
+          - iam.serviceAccountUser
+          - serviceusage.serviceUsageAdmin
+    services:
+      - cloudfunctions.googleapis.com
+      - iam.googleapis.com
+      - serviceusage.googleapis.com
+    providerVersions:
+      - source: hashicorp/google
+        version: ">= 5.0, < 8.0"
+      - source: hashicorp/google-beta
+        version: ">= 5.0, < 8.0"
