@@ -63,7 +63,12 @@ spec:
         varType: list(string)
       - name: firebase_admin_config
         description: The standard Firebase Admin configuration.
-        varType: any
+        varType: |- object({
+          projectId: string
+          databaseURL: string
+          storageBucket: string
+          location: string
+        })
       - name: runtime
         description: The runtime in which the function will run.
         varType: string
