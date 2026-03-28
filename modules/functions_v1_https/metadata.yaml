@@ -69,7 +69,7 @@ spec:
           })
         connections:
           - source:
-              source: github.com/inlined/firebase-component-catalog//modules/firebase_config
+              source: github.com/inlined/firebase-component-catalog/modules/firebase_config
               version: ">= 0.0.1"
             spec:
               outputExpr: config
