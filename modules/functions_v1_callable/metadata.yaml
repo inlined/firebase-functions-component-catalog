@@ -35,6 +35,13 @@ spec:
     examples:
       - name: functions_v1_callable_basic
         location: examples/functions_v1_callable
+  connections:
+    - name: firebase_admin_config
+      source:
+        source: github.com/inlined/firebase-component-catalog//modules/firebase-config
+        version: 0.0.1
+      spec:
+        outputExpr: config
   interfaces:
     variables:
       - name: name
