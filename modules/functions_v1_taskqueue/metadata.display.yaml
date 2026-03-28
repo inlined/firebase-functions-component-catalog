@@ -4,11 +4,11 @@ metadata:
   name: functions_v1_callable_display
 spec:
   info:
-    title: Firebase Functions v1 Callable Function Display
+    title: Firebase Functions v1 Task Queue Function Display
     source:
       repo: https://github.com/inlined/firebase-component-catalog.git
       sourceType: git
-      dir: /modules/functions_v1_callable
+      dir: /modules/functions_v1_taskqueue
   ui:
     input:
       variables:
