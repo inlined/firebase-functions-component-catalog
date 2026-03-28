@@ -68,8 +68,9 @@ spec:
             location: string
           })
         connections:
-          - source: github.com/inlined/firebase-component-catalog//modules/firebase_config
-            version: ">= 0.0.1"
+          - source:
+              source: github.com/inlined/firebase-component-catalog//modules/firebase_config
+              version: ">= 0.0.1"
             spec:
               outputExpr: config
       - name: runtime
