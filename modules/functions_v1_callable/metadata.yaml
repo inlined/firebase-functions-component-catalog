@@ -38,7 +38,7 @@ spec:
   connections:
     - name: firebase_admin_config
       source:
-        source: github.com/inlined/firebase-component-catalog//modules/firebase-config
+        source: github.com/inlined/firebase-component-catalog//modules/firebase_config
         version: 0.0.1
       spec:
         outputExpr: config
